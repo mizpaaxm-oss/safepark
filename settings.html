@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafePark | Settings</title>
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="settings">
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><img src="icons/logo.svg" alt="SafePark logo"> SafePark</div>
+    <nav class="sidebar-nav">
+      <div class="nav-label">Main</div>
+      <a href="dashboard.html" data-nav="dashboard"><img src="icons/dashboard.svg" class="icon" alt="">Dashboard</a>
+      <div class="nav-label">Management</div>
+      <a href="drivers.html" data-nav="drivers"><img src="icons/drivers.svg" class="icon" alt="">Drivers</a>
+      <a href="vehicles.html" data-nav="vehicles"><img src="icons/vehicles.svg" class="icon" alt="">Vehicles</a>
+      <a href="slots.html" data-nav="slots"><img src="icons/slots.svg" class="icon" alt="">Parking Slots</a>
+      <a href="records.html" data-nav="records"><img src="icons/records.svg" class="icon" alt="">Parking Records</a>
+      <a href="payments.html" data-nav="payments"><img src="icons/money.svg" class="icon" alt="">Payments</a>
+      <div class="nav-label">Insights</div>
+      <a href="reports.html" data-nav="reports"><img src="icons/reports.svg" class="icon" alt="">Reports</a>
+      <a href="settings.html" data-nav="settings"><img src="icons/settings.svg" class="icon" alt="">Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="logout.html"><img src="icons/logout.svg" class="icon" alt="">Logout</a>
+    </div>
+  </aside>
+  <div class="sidebar-overlay"></div>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" id="menuToggle"><img src="icons/menu.svg" class="icon" alt=""></button>
+        <div><h1>Settings</h1><div class="subtitle">Manage your account and system preferences.</div></div>
+      </div>
+      <div class="topbar-right">
+        <button class="icon-btn"><img src="icons/bell.svg" class="icon" alt=""><span class="dot"></span></button>
+        <div class="profile-chip">
+          <div class="avatar" id="topbarAvatar">A</div>
+          <div><div class="name" id="topbarUserName">Admin User</div><div class="role" id="topbarUserRole">Administrator</div></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="page-head">
+        <div>
+          <div class="breadcrumb">SafePark / <span>Settings</span></div>
+          <h2>Settings</h2>
+        </div>
+      </div>
+
+      <div class="settings-tabs">
+        <button class="active" data-tab="tabProfile">Profile</button>
+        <button data-tab="tabSecurity">Security</button>
+        <button data-tab="tabSystem">System Preferences</button>
+        <button data-tab="tabData">Data Management</button>
+      </div>
+
+      <div class="panel settings-panel active" id="tabProfile">
+        <h3 style="margin-bottom:18px;">Profile Information</h3>
+        <form id="profileForm" class="form-grid">
+          <div class="form-field"><label>Full Name</label><input type="text" id="settingsName"></div>
+          <div class="form-field"><label>Email Address</label><input type="email" id="settingsEmail"></div>
+          <div class="form-field"><label>Phone Number</label><input type="text" placeholder="06XXXXXXX"></div>
+          <div class="form-field"><label>Role</label><input type="text" value="Administrator" disabled></div>
+          <div class="full" style="margin-top:6px;"><button type="submit" class="btn btn-primary">Save Changes</button></div>
+        </form>
+      </div>
+
+      <div class="panel settings-panel" id="tabSecurity">
+        <h3 style="margin-bottom:18px;">Change Password</h3>
+        <form id="passwordForm" class="form-grid">
+          <div class="form-field full"><label>Current Password</label><input type="password" required></div>
+          <div class="form-field"><label>New Password</label><input type="password" required></div>
+          <div class="form-field"><label>Confirm New Password</label><input type="password" required></div>
+          <div class="full" style="margin-top:6px;"><button type="submit" class="btn btn-primary">Update Password</button></div>
+        </form>
+      </div>
+
+      <div class="panel settings-panel" id="tabSystem">
+        <h3 style="margin-bottom:6px;">System Preferences</h3>
+        <div class="setting-row">
+          <div class="info"><strong>Email Notifications</strong><span>Receive alerts for entries, exits and payments.</span></div>
+          <div class="switch on"></div>
+        </div>
+        <div class="setting-row">
+          <div class="info"><strong>SMS Alerts</strong><span>Send SMS to drivers when their slot reservation is near.</span></div>
+          <div class="switch"></div>
+        </div>
+        <div class="setting-row">
+          <div class="info"><strong>Auto-generate Daily Report</strong><span>Automatically compile a summary report every night.</span></div>
+          <div class="switch on"></div>
+        </div>
+        <div class="setting-row">
+          <div class="info"><strong>Dark Mode</strong><span>Switch the dashboard to a darker color scheme.</span></div>
+          <div class="switch"></div>
+        </div>
+      </div>
+
+      <div class="panel settings-panel" id="tabData">
+        <h3 style="margin-bottom:6px;">Data Management</h3>
+        <div class="setting-row">
+          <div class="info"><strong>Reset Demo Data</strong><span>Restore drivers, vehicles, slots and records to the default sample dataset.</span></div>
+          <button class="btn btn-danger-outline btn-sm" id="resetDataBtn">Reset Data</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

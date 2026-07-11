@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafePark | Reports</title>
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="reports">
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><img src="icons/logo.svg" alt="SafePark logo"> SafePark</div>
+    <nav class="sidebar-nav">
+      <div class="nav-label">Main</div>
+      <a href="dashboard.html" data-nav="dashboard"><img src="icons/dashboard.svg" class="icon" alt="">Dashboard</a>
+      <div class="nav-label">Management</div>
+      <a href="drivers.html" data-nav="drivers"><img src="icons/drivers.svg" class="icon" alt="">Drivers</a>
+      <a href="vehicles.html" data-nav="vehicles"><img src="icons/vehicles.svg" class="icon" alt="">Vehicles</a>
+      <a href="slots.html" data-nav="slots"><img src="icons/slots.svg" class="icon" alt="">Parking Slots</a>
+      <a href="records.html" data-nav="records"><img src="icons/records.svg" class="icon" alt="">Parking Records</a>
+      <a href="payments.html" data-nav="payments"><img src="icons/money.svg" class="icon" alt="">Payments</a>
+      <div class="nav-label">Insights</div>
+      <a href="reports.html" data-nav="reports"><img src="icons/reports.svg" class="icon" alt="">Reports</a>
+      <a href="settings.html" data-nav="settings"><img src="icons/settings.svg" class="icon" alt="">Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="logout.html"><img src="icons/logout.svg" class="icon" alt="">Logout</a>
+    </div>
+  </aside>
+  <div class="sidebar-overlay"></div>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" id="menuToggle"><img src="icons/menu.svg" class="icon" alt=""></button>
+        <div><h1>Reports</h1><div class="subtitle">Revenue, occupancy and vehicle insights.</div></div>
+      </div>
+      <div class="topbar-right">
+        <div class="search-box"><img src="icons/search.svg" class="icon" alt=""><input type="text" placeholder="Search..."></div>
+        <button class="icon-btn"><img src="icons/bell.svg" class="icon" alt=""><span class="dot"></span></button>
+        <div class="profile-chip">
+          <div class="avatar" id="topbarAvatar">A</div>
+          <div><div class="name" id="topbarUserName">Admin User</div><div class="role" id="topbarUserRole">Administrator</div></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="page-head">
+        <div>
+          <div class="breadcrumb">SafePark / <span>Reports</span></div>
+          <h2>Reports & Analytics</h2>
+          <p>Overview of parking activity and revenue.</p>
+        </div>
+        <button class="btn btn-primary" id="exportReportBtn"><img src="icons/reports.svg" class="icon-sm" alt="">Export Report</button>
+      </div>
+
+      <section class="kpi-row" id="reportKpis"></section>
+
+      <section class="dash-grid">
+        <div class="chart-panel">
+          <div class="panel-head"><h3>Weekly Revenue Trend</h3></div>
+          <div class="bar-chart" id="reportsBarChart"></div>
+          <div class="legend-row"><span class="item"><span class="dot" style="background:#3d8bff"></span>Revenue ($)</span></div>
+        </div>
+        <div class="chart-panel">
+          <div class="panel-head"><h3>Vehicles by Type</h3></div>
+          <div class="bar-chart" id="vehicleTypeChart"></div>
+        </div>
+      </section>
+
+      <section class="table-card" style="margin-top:20px;">
+        <div class="panel-head" style="padding:20px 20px 0;"><h3>Recent Payments</h3></div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th>Payment ID</th><th>Vehicle</th><th>Slot</th><th>Amount</th><th>Method</th><th>Status</th><th>Paid At</th></tr>
+            </thead>
+            <tbody id="paymentsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

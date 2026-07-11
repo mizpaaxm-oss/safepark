@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafePark | Payments</title>
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="payments">
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><img src="icons/logo.svg" alt="SafePark logo"> SafePark</div>
+    <nav class="sidebar-nav">
+      <div class="nav-label">Main</div>
+      <a href="dashboard.html" data-nav="dashboard"><img src="icons/dashboard.svg" class="icon" alt="">Dashboard</a>
+      <div class="nav-label">Management</div>
+      <a href="drivers.html" data-nav="drivers"><img src="icons/drivers.svg" class="icon" alt="">Drivers</a>
+      <a href="vehicles.html" data-nav="vehicles"><img src="icons/vehicles.svg" class="icon" alt="">Vehicles</a>
+      <a href="slots.html" data-nav="slots"><img src="icons/slots.svg" class="icon" alt="">Parking Slots</a>
+      <a href="records.html" data-nav="records"><img src="icons/records.svg" class="icon" alt="">Parking Records</a>
+      <a href="payments.html" data-nav="payments"><img src="icons/money.svg" class="icon" alt="">Payments</a>
+      <div class="nav-label">Insights</div>
+      <a href="reports.html" data-nav="reports"><img src="icons/reports.svg" class="icon" alt="">Reports</a>
+      <a href="settings.html" data-nav="settings"><img src="icons/settings.svg" class="icon" alt="">Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="logout.html"><img src="icons/logout.svg" class="icon" alt="">Logout</a>
+    </div>
+  </aside>
+  <div class="sidebar-overlay"></div>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" id="menuToggle"><img src="icons/menu.svg" class="icon" alt=""></button>
+        <div><h1>Payments</h1><div class="subtitle">Track and manage parking fee payments.</div></div>
+      </div>
+      <div class="topbar-right">
+        <div class="search-box"><img src="icons/search.svg" class="icon" alt=""><input type="text" placeholder="Search..."></div>
+        <button class="icon-btn"><img src="icons/bell.svg" class="icon" alt=""><span class="dot"></span></button>
+        <div class="profile-chip">
+          <div class="avatar" id="topbarAvatar">A</div>
+          <div><div class="name" id="topbarUserName">Admin User</div><div class="role" id="topbarUserRole">Administrator</div></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="page-head">
+        <div>
+          <div class="breadcrumb">SafePark / <span>Payments</span></div>
+          <h2>Payments Management</h2>
+          <p id="paymentsCount">0 payments</p>
+        </div>
+        <button class="btn btn-primary" id="addPaymentBtn"><img src="icons/plus.svg" class="icon-sm" alt="">Record Payment</button>
+      </div>
+
+      <section class="stats-grid" id="paymentsStatsGrid" style="margin-bottom:22px;"></section>
+
+      <div class="table-toolbar">
+        <div class="left-tools">
+          <input type="text" id="paymentSearch" class="select-filter" placeholder="Search plate or driver...">
+          <select id="paymentStatusFilter" class="select-filter">
+            <option value="">All Status</option>
+            <option value="paid">Paid</option>
+            <option value="pending">Pending</option>
+          </select>
+          <select id="paymentMethodFilter" class="select-filter">
+            <option value="">All Methods</option>
+            <option value="Cash">Cash</option>
+            <option value="Mobile Money">Mobile Money</option>
+            <option value="Card">Card</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th>Payment ID</th><th>Vehicle</th><th>Slot</th><th>Amount</th><th>Method</th><th>Status</th><th>Paid At</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="paymentsPageTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Record Payment Modal -->
+<div class="modal-overlay" id="paymentModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Record Payment</h3>
+      <button class="modal-close" data-close-modal="paymentModal"><img src="icons/close.svg" class="icon-sm" alt=""></button>
+    </div>
+    <form id="paymentForm">
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-field full">
+            <label>Completed Parking Session *</label>
+            <select id="paymentRecord" required></select>
+            <p class="form-hint">Only vehicles that have already checked out are listed.</p>
+          </div>
+          <div class="form-field">
+            <label>Amount ($)</label>
+            <input type="number" id="paymentAmount" step="0.1" min="0" placeholder="Auto-filled from session fee">
+          </div>
+          <div class="form-field">
+            <label>Payment Method</label>
+            <select id="paymentMethod">
+              <option>Cash</option><option>Mobile Money</option><option>Card</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label>Status</label>
+            <select id="paymentStatus">
+              <option value="paid">Paid</option>
+              <option value="pending">Pending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-close-modal="paymentModal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Payment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

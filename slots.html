@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafePark | Parking Slots</title>
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="slots">
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><img src="icons/logo.svg" alt="SafePark logo"> SafePark</div>
+    <nav class="sidebar-nav">
+      <div class="nav-label">Main</div>
+      <a href="dashboard.html" data-nav="dashboard"><img src="icons/dashboard.svg" class="icon" alt="">Dashboard</a>
+      <div class="nav-label">Management</div>
+      <a href="drivers.html" data-nav="drivers"><img src="icons/drivers.svg" class="icon" alt="">Drivers</a>
+      <a href="vehicles.html" data-nav="vehicles"><img src="icons/vehicles.svg" class="icon" alt="">Vehicles</a>
+      <a href="slots.html" data-nav="slots"><img src="icons/slots.svg" class="icon" alt="">Parking Slots</a>
+      <a href="records.html" data-nav="records"><img src="icons/records.svg" class="icon" alt="">Parking Records</a>
+      <a href="payments.html" data-nav="payments"><img src="icons/money.svg" class="icon" alt="">Payments</a>
+      <div class="nav-label">Insights</div>
+      <a href="reports.html" data-nav="reports"><img src="icons/reports.svg" class="icon" alt="">Reports</a>
+      <a href="settings.html" data-nav="settings"><img src="icons/settings.svg" class="icon" alt="">Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="logout.html"><img src="icons/logout.svg" class="icon" alt="">Logout</a>
+    </div>
+  </aside>
+  <div class="sidebar-overlay"></div>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" id="menuToggle"><img src="icons/menu.svg" class="icon" alt=""></button>
+        <div><h1>Parking Slots</h1><div class="subtitle">Live status of every slot on the premises.</div></div>
+      </div>
+      <div class="topbar-right">
+        <div class="search-box"><img src="icons/search.svg" class="icon" alt=""><input type="text" placeholder="Search..."></div>
+        <button class="icon-btn"><img src="icons/bell.svg" class="icon" alt=""><span class="dot"></span></button>
+        <div class="profile-chip">
+          <div class="avatar" id="topbarAvatar">A</div>
+          <div><div class="name" id="topbarUserName">Admin User</div><div class="role" id="topbarUserRole">Administrator</div></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="page-head">
+        <div>
+          <div class="breadcrumb">SafePark / <span>Parking Slots</span></div>
+          <h2>Parking Slots</h2>
+          <p id="slotsSummary">0 slots</p>
+        </div>
+        <button class="btn btn-primary" id="addSlotBtn"><img src="icons/plus.svg" class="icon-sm" alt="">Add Slot</button>
+      </div>
+
+      <div class="slots-legend">
+        <span class="item"><span class="dot" style="background:var(--success)"></span>Available</span>
+        <span class="item"><span class="dot" style="background:var(--warning)"></span>Occupied</span>
+        <span class="item"><span class="dot" style="background:var(--blue-500)"></span>Reserved</span>
+        <span class="item"><span class="dot" style="background:var(--danger)"></span>Maintenance</span>
+      </div>
+
+      <div class="table-toolbar">
+        <div class="left-tools">
+          <select id="slotZoneFilter" class="select-filter">
+            <option value="">All Zones</option>
+            <option value="A">Zone A</option>
+            <option value="B">Zone B</option>
+            <option value="C">Zone C</option>
+            <option value="D">Zone D</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="slots-grid" id="slotsGrid"></div>
+    </main>
+  </div>
+</div>
+
+<!-- Add/Edit Slot Modal -->
+<div class="modal-overlay" id="slotModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="slotModalTitle">Add New Slot</h3>
+      <button class="modal-close" data-close-modal="slotModal"><img src="icons/close.svg" class="icon-sm" alt=""></button>
+    </div>
+    <form id="slotForm">
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Slot Code *</label>
+            <input type="text" id="slotCode" required placeholder="e.g. A-07">
+          </div>
+          <div class="form-field">
+            <label>Zone *</label>
+            <input type="text" id="slotZone" required placeholder="e.g. A" maxlength="2">
+          </div>
+          <div class="form-field">
+            <label>Floor / Level</label>
+            <input type="text" id="slotFloor" placeholder="e.g. Ground Floor">
+          </div>
+          <div class="form-field">
+            <label>Slot Type</label>
+            <select id="slotType">
+              <option>Standard</option><option>Reserved</option><option>Bike</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label>Status</label>
+            <select id="slotStatus">
+              <option value="available">Available</option>
+              <option value="occupied">Occupied</option>
+              <option value="reserved">Reserved</option>
+              <option value="maintenance">Maintenance</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-close-modal="slotModal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Slot</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

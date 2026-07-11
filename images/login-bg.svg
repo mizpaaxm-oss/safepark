@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1c38"/>
+      <stop offset="100%" stop-color="#123a68"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1000" fill="url(#lg)"/>
+  <g opacity="0.12" stroke="#ffffff" stroke-width="3">
+    <circle cx="150" cy="150" r="140"/>
+    <circle cx="780" cy="850" r="200"/>
+    <circle cx="800" cy="120" r="70"/>
+  </g>
+  <g opacity="0.08" fill="#ffffff">
+    <rect x="600" y="600" width="260" height="260" rx="24" transform="rotate(18 730 730)"/>
+  </g>
+  <!-- faint parking grid -->
+  <g stroke="#8fb8ea" stroke-width="2" opacity="0.1">
+    <line x1="0" y1="700" x2="900" y2="700"/>
+    <line x1="150" y1="700" x2="120" y2="1000"/>
+    <line x1="300" y1="700" x2="300" y2="1000"/>
+    <line x1="450" y1="700" x2="480" y2="1000"/>
+    <line x1="600" y1="700" x2="660" y2="1000"/>
+  </g>
+</svg>
